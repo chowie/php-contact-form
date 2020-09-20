@@ -1,45 +1,52 @@
 version: "3"
+networks:
+    app-tier:
+        driver: bridge
 
 services:
-
     redis:
-        container_name: laravel-redis
+        container_name: di-cars-redis
         image: redis:4-alpine
+        networks:
+            - app-tier
         ports:
-          - "9998:6379"
-        restart: on-failure
+            - 16379:6379
+        volumes:
+            - redis:/data
 
-  smtp:
-      container_name: laravel-mailhog
-      image: mailhog/mailhog
-      ports:
-        - "1025:1025"
-        - "8025:8025"
-      environment:
-        TZ: "America/Detroit"
-        command: >
-          apk --update add curl bash nano tzdata && >
-          cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime && >
-          echo "Europe/Stockholm" > /etc/timezone && >
-          apk del tzdata && >
-          rm -r /var/cache/apk/* && >
-          mkdir -p /usr/share/zoneinfo/Europe && >
-          ln -s /etc/localtime /usr/share/zoneinfo/Europe/Stockholm
+    smtp:
+        container_name: di-cars-mailhog
+        image: mailhog/mailhog
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            - app-tier
+        environment:
+            TZ: "America/Detroit"
+            command: >
+                apk --update add curl bash nano tzdata && >
+                cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime && >
+                echo "Europe/Stockholm" > /etc/timezone && >
+                apk del tzdata && >
+                rm -r /var/cache/apk/* && >
+                mkdir -p /usr/share/zoneinfo/Europe && >
+                ln -s /etc/localtime /usr/share/zoneinfo/Europe/Stockholm
 
-  mysql:
-    container_name: laravel-mysql
-    image: mysql:5.7
-    networks:
-      - app-tier
-    ports:
-      - 13306:3306
-    volumes:
-      - mysql:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
+    mysql:
+        container_name: di-cars-mysql
+        image: mysql:5.7
+        networks:
+            - app-tier
+        ports:
+            - 13306:3306
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: homestead
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: homestead
+            MYSQL_PASSWORD: secret
 
 volumes:
   redis:
