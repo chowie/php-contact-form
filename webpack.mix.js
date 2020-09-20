@@ -11,7 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+//mix.js('resources/js/app.js', 'public/js')
+mix.copy('resources/js/grayscale.min.js', 'public/js')
+    .copy('resources/css/grayscale.min.css', 'public/css')
+    .copy('resources/img', 'public/img')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
