@@ -116,7 +116,7 @@
                 <h2>Contact Guy Smiley</h2>
                 <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
                 <p class="bg-primary">
-                    [[ This is where you'd put your contact form.  Get it done! ]]
+                    @include('contact')
                 </p>
             </div>
         </div>
