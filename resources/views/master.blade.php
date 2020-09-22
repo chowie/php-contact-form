@@ -120,9 +120,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Guy Smiley</h2>
                 <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
-                <p class="bg-primary">
-                    @include('contact')
-                </p>
+                @include('contact')
             </div>
         </div>
     </section>

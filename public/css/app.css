@@ -15,3 +15,7 @@ textarea.is-invalid,
   color: #a94442;
 }
 
+#contact-phone {
+  margin-bottom: 35px;
+}
+

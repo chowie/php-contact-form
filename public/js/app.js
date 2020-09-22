@@ -1971,6 +1971,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED_MODULE_0___default.a);
@@ -1981,8 +1985,18 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
       name: null,
       email: null,
       message: null,
-      phone: null
+      phone: null,
+      phoneEntry: null
     };
+  },
+  computed: {
+    phoneIsValid: function phoneIsValid() {
+      if (this.phone === null) {
+        return true;
+      }
+
+      return this.phoneEntry;
+    }
   },
   methods: {
     validateBeforeSubmit: function validateBeforeSubmit(evt) {
@@ -1996,6 +2010,9 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
         }
       });
     },
+    phoneUpdate: function phoneUpdate(payload) {
+      this.phoneEntry = payload.isValid;
+    },
     postData: function postData(evt) {
       axios.post('/messages/store', {
         name: this.name,
@@ -2008,6 +2025,11 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
         console.log('Do something with the errors.', errors);
       });
     }
+  },
+  beforeMount: function beforeMount() {
+    this.$on('update', function (data) {
+      console.log('payload', data);
+    });
   }
 });
 
@@ -45137,7 +45159,9 @@ var render = function() {
             _c("label", { attrs: { for: "name" } }, [_vm._v("Phone")]),
             _vm._v(" "),
             _c("vue-phone-number-input", {
+              class: { "is-invalid": !_vm.phoneIsValid },
               attrs: { "valid-color": "#3c763d", "error-color": "#a94442" },
+              on: { update: _vm.phoneUpdate },
               model: {
                 value: _vm.phone,
                 callback: function($$v) {
@@ -45145,21 +45169,46 @@ var render = function() {
                 },
                 expression: "phone"
               }
-            })
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.phoneIsValid,
+                    expression: "!phoneIsValid"
+                  }
+                ],
+                staticClass: "help text-danger"
+              },
+              [_vm._v("Phone number is not valid.")]
+            )
           ],
           1
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-default btn-lg", attrs: { type: "submit" } },
-          [_vm._v("Send message")]
-        )
+        _vm._m(0)
       ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 text-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-default btn-lg", attrs: { type: "submit" } },
+        [_vm._v("Send message")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

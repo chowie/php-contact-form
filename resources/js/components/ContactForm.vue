@@ -48,9 +48,13 @@
 
             <div class="form-group text-left" id="contact-phone">
                 <label for="name">Phone</label>
-                <vue-phone-number-input v-model="phone" valid-color="#3c763d" error-color="#a94442"></vue-phone-number-input>
+                <vue-phone-number-input :class="{'is-invalid': !phoneIsValid }" @update="phoneUpdate" v-model="phone" valid-color="#3c763d" error-color="#a94442"></vue-phone-number-input>
+                <span v-show="!phoneIsValid" class="help text-danger">Phone number is not valid.</span>
             </div>
-            <button type="submit" class="btn btn-default btn-lg">Send message</button>
+
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-default btn-lg">Send message</button>
+            </div>
 
         </form>
     </div>
@@ -70,7 +74,22 @@ export default {
         email: null,
         message: null,
         phone: null,
+        phoneEntry: null,
     }),
+
+    computed: {
+
+        phoneIsValid() {
+
+            if (this.phone === null) {
+                return true;
+            }
+
+            return this.phoneEntry;
+        }
+
+    },
+
     methods: {
         validateBeforeSubmit(evt) {
             this.$validator.validateAll().then((result,evt) => {
@@ -81,6 +100,11 @@ export default {
 
             });
         },
+
+        phoneUpdate(payload) {
+            this.phoneEntry = payload.isValid;
+        },
+
         postData(evt) {
 
             axios.post('/messages/store', {
@@ -99,6 +123,13 @@ export default {
                 });
 
         }
+    },
+
+    beforeMount() {
+
+        this.$on('update', data => {
+            console.log('payload', data);
+        })
     }
 };
 </script>
