@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AddMessage;
+use App\Mail\MessageReceived;
 use App\Models\Message;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -20,6 +22,10 @@ class MessageController extends Controller
         $message->phone = request('phone', null);
 
         $message->save();
+
+        $to = config('mail.to');
+
+        Mail::to($to['address'], $to['name'])->send(new MessageReceived($message));
 
         return response()->json(['created' => true]);
     }
