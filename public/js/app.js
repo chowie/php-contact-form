@@ -1978,10 +1978,10 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
   name: 'contact-form',
   data: function data() {
     return {
-      name: '',
-      email: '',
-      message: '',
-      phone: ''
+      name: null,
+      email: null,
+      message: null,
+      phone: null
     };
   },
   methods: {
@@ -45137,6 +45137,7 @@ var render = function() {
             _c("label", { attrs: { for: "name" } }, [_vm._v("Phone")]),
             _vm._v(" "),
             _c("vue-phone-number-input", {
+              attrs: { "valid-color": "#3c763d", "error-color": "#a94442" },
               model: {
                 value: _vm.phone,
                 callback: function($$v) {

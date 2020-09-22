@@ -1,5 +1,19 @@
-input.is-invalid,
-textarea.is-invalid {
-    border-color: #a94442;
-    color: #a94442;
+@import 'variables';
+
+input#MazPhoneNumberInput-4_phone_number {
+    color: #555;
 }
+
+input.is-valid,
+textarea.is-valid,
+.is-valid input {
+    border-color: $success;
+}
+
+input.is-invalid,
+textarea.is-invalid,
+.is-invalid input {
+    border-color: $danger;
+    color: $danger;
+}
+

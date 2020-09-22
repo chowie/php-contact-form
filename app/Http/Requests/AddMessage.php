@@ -27,7 +27,7 @@ class AddMessage extends FormRequest
             'name' => 'required',
             'email' => 'required|email:rfc',
             'message' => 'required',
-            'phone' => 'phone:AUTO,US',
+            'phone' => 'nullable|phone:AUTO,US',
         ];
     }
 }

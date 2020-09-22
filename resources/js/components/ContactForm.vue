@@ -48,7 +48,7 @@
 
             <div class="form-group text-left" id="contact-phone">
                 <label for="name">Phone</label>
-                <vue-phone-number-input v-model="phone"></vue-phone-number-input>
+                <vue-phone-number-input v-model="phone" valid-color="#3c763d" error-color="#a94442"></vue-phone-number-input>
             </div>
             <button type="submit" class="btn btn-default btn-lg">Send message</button>
 
@@ -66,10 +66,10 @@ Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 export default {
     name: 'contact-form',
     data: () => ({
-        name: '',
-        email: '',
-        message: '',
-        phone: '',
+        name: null,
+        email: null,
+        message: null,
+        phone: null,
     }),
     methods: {
         validateBeforeSubmit(evt) {

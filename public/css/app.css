@@ -1,5 +1,16 @@
+input#MazPhoneNumberInput-4_phone_number {
+  color: #555;
+}
+
+input.is-valid,
+textarea.is-valid,
+.is-valid input {
+  border-color: #3c763d;
+}
+
 input.is-invalid,
-textarea.is-invalid {
+textarea.is-invalid,
+.is-invalid input {
   border-color: #a94442;
   color: #a94442;
 }
