@@ -2000,7 +2000,8 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
       axios.post('/messages/store', {
         name: this.name,
         email: this.email,
-        message: this.message
+        message: this.message,
+        phone: this.phone
       }).then(function (data) {
         Event.$emit('contact-form-submitted', true);
       })["catch"](function (errors) {

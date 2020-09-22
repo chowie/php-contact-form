@@ -86,7 +86,8 @@ export default {
             axios.post('/messages/store', {
                 name: this.name,
                 email: this.email,
-                message: this.message
+                message: this.message,
+                phone: this.phone,
             })
                 .then( data => {
                     Event.$emit('contact-form-submitted', true);
