@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+require('laravel-mix-polyfill');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,10 +13,9 @@ const mix = require('laravel-mix');
  |
  */
 
-//mix.js('resources/js/app.js', 'public/js')
-mix.copy('resources/js/grayscale.min.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .copy('resources/js/grayscale.min.js', 'public/js')
     .copy('resources/css/grayscale.min.css', 'public/css')
     .copy('resources/img', 'public/img')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .version();

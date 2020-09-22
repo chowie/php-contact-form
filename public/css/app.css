@@ -1,0 +1,6 @@
+input.is-invalid,
+textarea.is-invalid {
+  border-color: #a94442;
+  color: #a94442;
+}
+

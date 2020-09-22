@@ -1,1 +1,6 @@
-<h1>Hello foobar</h1>
+<section class="resume-section" id="contact">
+    <div id="app" class="">
+        <contact-form v-if="!submitted"></contact-form>
+        <success v-if="submitted"></success>
+    </div>
+</section>
