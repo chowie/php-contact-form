@@ -16,7 +16,7 @@ class MessageTest extends TestCase
         $messages = $this->messages();
 
         foreach ($messages['success'] as $message) {
-            $response = $this->post('/messages/store', $message);
+            $response = $this->post('/api/messages/store', $message);
 
             $response->assertStatus(200)->assertJson([
                 'created' => true,
@@ -24,7 +24,7 @@ class MessageTest extends TestCase
         }
 
         foreach ($messages['fail'] as $message) {
-            $response = $this->post('/messages/store', $message);
+            $response = $this->post('/api/messages/store', $message);
             $response->assertStatus(302);
         }
     }
@@ -38,13 +38,13 @@ class MessageTest extends TestCase
                     'name' => 'Sally',
                     'email' => 'sally@example.com',
                     'message' => 'lorem ipsum',
-                    'phone' => '5172825135',
+                    'phone' => '5172223333',
                 ],
                 [
-                    'name' => 'Bill Boberson',
-                    'email' => 'roger@example',
+                    'name' => 'Linda Richman',
+                    'email' => 'linda@coffee-talk.chat',
                     'message' => 'woot',
-                    'phone' => '5178675309',
+                    'phone' => '212-555-4444',
                 ],
             ],
 
@@ -60,7 +60,7 @@ class MessageTest extends TestCase
                 ],
                 [
                     'name' => 'Bill Boberson',
-                    'email' => 'roger@example',
+                    'email' => 'roger@example.com',
                     'message' => 'woot',
                     'phone' => '8675309',
                 ],

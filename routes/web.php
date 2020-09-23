@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +16,3 @@ use App\Http\Controllers\MessageController;
 Route::get('/', function () {
     return view('master');
 });
-
-Route::post('/messages/store', [MessageController::class, 'store']);

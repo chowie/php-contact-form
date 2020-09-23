@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
+    /**
+     * Save message and send email
+     *
+     * @param \App\Http\Requests\AddMessage $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(AddMessage $request)
     {
         $validated = $request->validated();

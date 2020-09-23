@@ -2014,7 +2014,7 @@ Vue.component('vue-phone-number-input', vue_phone_number_input__WEBPACK_IMPORTED
       this.phoneEntry = payload.isValid;
     },
     postData: function postData(evt) {
-      axios.post('/messages/store', {
+      axios.post('/api/messages/store', {
         name: this.name,
         email: this.email,
         message: this.message,
@@ -45160,7 +45160,11 @@ var render = function() {
             _vm._v(" "),
             _c("vue-phone-number-input", {
               class: { "is-invalid": !_vm.phoneIsValid },
-              attrs: { "valid-color": "#3c763d", "error-color": "#a94442" },
+              attrs: {
+                "default-country-code": "US",
+                "valid-color": "#3c763d",
+                "error-color": "#a94442"
+              },
               on: { update: _vm.phoneUpdate },
               model: {
                 value: _vm.phone,

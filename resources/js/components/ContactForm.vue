@@ -48,7 +48,7 @@
 
             <div class="form-group text-left" id="contact-phone">
                 <label for="name">Phone</label>
-                <vue-phone-number-input :class="{'is-invalid': !phoneIsValid }" @update="phoneUpdate" v-model="phone" valid-color="#3c763d" error-color="#a94442"></vue-phone-number-input>
+                <vue-phone-number-input default-country-code="US" :class="{'is-invalid': !phoneIsValid }" @update="phoneUpdate" v-model="phone" valid-color="#3c763d" error-color="#a94442"></vue-phone-number-input>
                 <span v-show="!phoneIsValid" class="help text-danger">Phone number is not valid.</span>
             </div>
 
@@ -107,7 +107,7 @@ export default {
 
         postData(evt) {
 
-            axios.post('/messages/store', {
+            axios.post('/api/messages/store', {
                 name: this.name,
                 email: this.email,
                 message: this.message,
