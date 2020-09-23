@@ -26,3 +26,40 @@ npm run prod
 
 npm run dev
 ```
+
+Check setting in `.env` and make any changes that you would like to have made
+and then run the following commands:
+
+```
+php artisan config:clear
+```
+
+If you'd like to use the Docker containers for this app run the following
+command:
+
+```
+docker-compose up -d
+```
+
+Once the Laravel app is connected to a running database you will need to setup
+the database table by running:
+
+```
+php artisan migrate
+```
+
+Then, you may proceed with the demo; e.g.
+
+```
+phpunit
+php -S 127.0.0.1:9999 -t public
+
+# Alternatively, to serve the app you can use if you like
+php artisan serve --port=9999
+
+```
+
+If you have questions, feel free to contact me at:
+
+phone: 260-615-4382
+email: me@christopherhowie.com

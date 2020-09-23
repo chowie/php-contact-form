@@ -4,16 +4,6 @@ networks:
         driver: bridge
 
 services:
-    redis:
-        container_name: di-cars-redis
-        image: redis:4-alpine
-        networks:
-            - app-tier
-        ports:
-            - 16379:6379
-        volumes:
-            - redis:/data
-
     smtp:
         container_name: di-cars-mailhog
         image: mailhog/mailhog
@@ -49,7 +39,5 @@ services:
             MYSQL_PASSWORD: secret
 
 volumes:
-  redis:
-    driver: "local"
   mysql:
     driver: "local"
