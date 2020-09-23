@@ -12,8 +12,8 @@ Before attempting to use the app do the following:
 
 Install Laravel vendor files using Composer from the command line. If you do not
 have Composer installed on your computer you can grab a copy from
-[https://getcomposer.org/download/]() or run the following code from your
-command line:
+[https://getcomposer.org/download/](https://getcomposer.org/download/) or run
+the following code from your command line:
 
 ```
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -72,4 +72,3 @@ php -S 127.0.0.1:9999 -t public
 php artisan serve --port=9999
 
 ```
-
