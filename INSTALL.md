@@ -20,6 +20,8 @@ Install npm packages (Optional - only if you need to rebuild assets for some
 reason)
 
 ```
+# cd to project root
+npm install
 npm run prod
 
 # or for the unminified versions
@@ -59,7 +61,3 @@ php artisan serve --port=9999
 
 ```
 
-If you have questions, feel free to contact me at:
-
-phone: 260-615-4382
-email: me@christopherhowie.com
